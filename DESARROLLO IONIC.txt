@@ -1,1 +1,16 @@
 set NODE_OPTIONS=--openssl-legacy-provider
+
+
+Paso 1
+npm install cypress --save-dev
+
+Paso 2
+Abrir PowerShell en Windows
+
+Paso 3
+ir al directorio del proyecto
+
+Paso 4
+./node_modules/.bin/cypress open
+
+
