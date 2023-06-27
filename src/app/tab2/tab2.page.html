@@ -12,27 +12,27 @@
     <ion-label color=""><b>Ingrese el Titulo del Libro</b></ion-label>
     <ion-item class="ion-text-center">
       <ion-input type="text" hidden [(ngModel)]="idLibro"></ion-input>
-      <ion-input type="text" [(ngModel)]="titulo"></ion-input>
+      <ion-input id="titulo" type="text" [(ngModel)]="titulo"></ion-input>
     </ion-item>
   </ion-col>
   <ion-col class="ion-text-center">
     <ion-label color=""><b>Ingrese Autor</b></ion-label>
     <ion-item class="ion-text-center">
-      <ion-input type="text" [(ngModel)]="autor"></ion-input>
+      <ion-input id="autor" type="text" [(ngModel)]="autor"></ion-input>
     </ion-item>
   </ion-col>
   <ion-col class="ion-text-center">
     <ion-label color=""><b>Ingrese Año</b></ion-label>
     <ion-item class="ion-text-center">
-      <ion-input type="text" [(ngModel)]="anio"></ion-input>
+      <ion-input id="anio" type="text" [(ngModel)]="anio"></ion-input>
     </ion-item>
   </ion-col>
 </ion-row>
 <ion-list class="ion-text-center ion-margin-bottom">
   <ion-row>
     <ion-col>
-      <ion-button *ngIf="!swGuardarCambios" (click)="addLibro()">Agregar Libro</ion-button>
-      <ion-button *ngIf="swGuardarCambios" color="warning" (click)="guardarCambios()">Guardar Cambios</ion-button>
+      <ion-button id="agregarLibro" *ngIf="!swGuardarCambios" (click)="addLibro()">Agregar Libro</ion-button>
+      <ion-button id="guardarCambios" *ngIf="swGuardarCambios" color="warning" (click)="guardarCambios()">Guardar Cambios</ion-button>
     </ion-col>
   </ion-row>
 </ion-list>
@@ -50,8 +50,8 @@
             <ion-card-title><b>Autor: </b>{{item.autor}}</ion-card-title>
             <ion-card-title><b>Año: </b>{{item.anio}}</ion-card-title>
           </ion-card-header>
-          <ion-button size="small" color="warning" fill="clear" (click)="updateLibro(item)">Editar</ion-button>
-          <ion-button size="small" color="danger" fill="clear" (click)="deleteLibro(item)">Eliminar</ion-button>
+          <ion-button id="updateLibro" size="small" color="warning" fill="clear" (click)="updateLibro(item)">Editar</ion-button>
+          <ion-button id="deleteLibro" size="small" color="danger" fill="clear" (click)="deleteLibro(item)">Eliminar</ion-button>
         </ion-card>
       </ion-col>
     </ion-row>
