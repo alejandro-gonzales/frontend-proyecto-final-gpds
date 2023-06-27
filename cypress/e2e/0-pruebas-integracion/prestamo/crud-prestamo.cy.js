@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe('CRUD Libro', () => {
+describe('CRUD Prestamo', () => {
 
     //Antes que nada abrir el navegador en el proyecto Frontend que es el puerto 8100
     beforeEach(() => {
@@ -8,52 +8,72 @@ describe('CRUD Libro', () => {
             //cy.visit('http://localhost:8200')//Frontend de Test
     })
 
-    //Servicio API - GetLibro()
-    it('GetLibro()', () => {
+    //Servicio API - GetPrestamo()
+    it('GetPrestamo()', () => {
         cy.wait(1000);
         //cy.get('ion-tab-button').should('be.not.visible');
-        cy.get('ion-tab-button').eq(1).click(); // click en el TAB de Libro
-        cy.wait(1000);
+        cy.get('ion-tab-button').eq(2).click(); // click en el TAB de Prestamo
+        cy.wait(3000);
         cy.get('ion-item').should('be.visible').should('not.have.length', '0'); //Verifica que exista un ion-item
+        cy.wait(3000);
     });
 
-    //Servicio API - AddLibro(entidad)
-    it('AddLibro(entidad)', () => {
+    //Servicio API - AddPrestamo(entidad)
+    it('AddPrestamo(entidad)', () => {
         cy.wait(1000);
-        cy.get('ion-tab-button').eq(1).click();
+        cy.get('ion-tab-button').eq(2).click();
         cy.wait(1000);
-        cy.get('#titulo').type('Titulo Prueba cypress', { delay: 100 }).should('have.value', 'Titulo Prueba cypress');
-        cy.wait(500);
-        cy.get('#autor').type('Autor Prueba cypress', { delay: 100 }).should('have.value','Autor Prueba cypress');
-        cy.wait(500);
-        cy.get('#anio').type('cyprs', { delay: 100 }).should('have.value', 'cyprs');
-        cy.wait(500);
-        cy.get('#agregarLibro').not('[disabled]').click();
+        cy.get('#idUsuario').click(); // Abre el combo desplegable
+        cy.wait(1000);
+        cy.get('.alert-radio-group .sc-ion-alert-md').contains('Luis Vargas').click(); // Selecciona la opción por nombre
+        cy.wait(1000);
+        cy.get('.alert-button-group .sc-ion-alert-md').contains('OK').click(); // Presiona el botón "OK"
+        cy.wait(1000);
+        cy.get('#idLibro').click(); // Abre el combo desplegable
+        cy.wait(1000);
+        cy.get('.alert-radio-group .sc-ion-alert-md').contains('El Alquimista').click(); // Selecciona la opción por nombre de Libro
+        cy.wait(1000);
+        cy.get('.alert-button-group .sc-ion-alert-md').contains('OK').click(); // Presiona el botón "OK"
+        cy.wait(1000);
+        cy.get('#fechaRetiro').type('2023-06-27', { delay: 100 }).should('have.value', '2023-06-27');
+        cy.wait(1000);
+        cy.get('#fechaDevolucion').type('2023-06-29', { delay: 100 }).should('have.value', '2023-06-29');
+        cy.wait(1000);
+        cy.get('#agregarPrestamo').not('[disabled]').click();
+        cy.wait(3000);
     });
 
-    //Servicio API - UpdateLibro(entidad)
-    it('UpdateLibro(entidad)', () => {
+    // //Servicio API - UpdatePrestamo(entidad)
+    it('UpdatePrestamo(entidad)', () => {
         cy.wait(1000);
-        cy.get('ion-tab-button').eq(1).click();
+        cy.get('ion-tab-button').eq(2).click();
         cy.wait(1000);
-        cy.get('#updateLibro').eq(0).click(); //Click al boton de Editar un Libro
+        cy.get('#updatePrestamo').eq(0).click(); //Click al boton de Editar un Prestamo
         cy.wait(1000);
-        cy.get('#titulo').invoke('val', ''); //Vaciar el campo del textfield de titulo
-        cy.get('#autor').invoke('val', ''); //Vaciar el campo del textfield de autor
-        cy.get('#anio').invoke('val', ''); //Vaciar el campo del textfield de anio
-
-        cy.get('#titulo').type('Titulo Update cypress', { delay: 100 }); //Escribir "UPDATE Cypress en el textfield de titulo"
-        cy.get('#autor').type('Autor Update cypress', { delay: 100 }); //Escribir "UPDATE Cypress en el textfield de autor"
-        cy.get('#anio').type('UpCys', { delay: 100 }); //Escribir "UPDATE Cypress en el textfield de anio"
-        cy.wait(500);
+        cy.get('#idUsuario').click(); // Abre el combo desplegable
+        cy.wait(1000);
+        cy.get('.alert-radio-group .sc-ion-alert-md').contains('Dagner Velarde').click(); // Selecciona la opción por nombre
+        cy.wait(1000);
+        cy.get('.alert-button-group .sc-ion-alert-md').contains('OK').click(); // Presiona el botón "OK"
+        cy.wait(1000);
+        cy.get('#idLibro').click(); // Abre el combo desplegable
+        cy.wait(1000);
+        cy.get('.alert-radio-group .sc-ion-alert-md').contains('Don Quijote de la Mancha').click(); // Selecciona la opción por nombre de Libro
+        cy.wait(1000);
+        cy.get('.alert-button-group .sc-ion-alert-md').contains('OK').click(); // Presiona el botón "OK"
+        cy.wait(1000);
+        cy.get('#fechaRetiro').type('2024-12-27', { delay: 100 }).should('have.value', '2024-12-27');
+        cy.wait(1000);
+        cy.get('#fechaDevolucion').type('2024-12-29', { delay: 100 }).should('have.value', '2024-12-29');
+        cy.wait(1000);
         cy.get('#guardarCambios').not('[disabled]').click(); //Click en guardar cambios
     });
 
-    //Servicio API - DeleteLibro(id)
-    it('DeleteLibro(id)', () => {
+    //Servicio API - DeletePrestamo(id)
+    it('DeletePrestamo(id)', () => {
         cy.wait(1000);
-        cy.get('ion-tab-button').eq(1).click();
+        cy.get('ion-tab-button').eq(2).click();
         cy.wait(1000);
-        cy.get('#deleteLibro').eq(0).click(); //Click al boton de Eliminar un Libro
+        cy.get('#deletePrestamo').eq(0).click(); //Click al boton de Eliminar un Prestamo
     });
 });

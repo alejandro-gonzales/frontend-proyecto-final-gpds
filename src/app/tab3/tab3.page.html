@@ -12,8 +12,8 @@
     <ion-item>
       <ion-input type="text" hidden [(ngModel)]="idPrestamo"></ion-input>
       <ion-input type="text" hidden [(ngModel)]="idUsuario"></ion-input>
-      <ion-select placeholder="Seleccione el Usuario" [(ngModel)]="idUsuario" class="select-small">
-        <ion-select-option *ngFor="let item of listUsuario" value={{item.id}}>{{item.nombreCompleto}}</ion-select-option>
+      <ion-select id="idUsuario" placeholder="Seleccione el Usuario" [(ngModel)]="idUsuario" class="select-small">
+        <ion-select-option id="selectUsuario" *ngFor="let item of listUsuario" value="{{item.id}}">{{item.nombreCompleto}}</ion-select-option>
       </ion-select>
     </ion-item> 
   </ion-col>
@@ -22,7 +22,7 @@
     <ion-label color=""><b>Seleccione el Libro</b></ion-label>
     <ion-item>
       <ion-input type="text" hidden [(ngModel)]="idLibro"></ion-input>
-      <ion-select placeholder="Seleccione el Libro" [(ngModel)]="idLibro">
+      <ion-select id="idLibro" placeholder="Seleccione el Libro" [(ngModel)]="idLibro">
         <ion-select-option *ngFor="let item of listLibro" value={{item.id}}>{{item.titulo}}</ion-select-option>
       </ion-select>
   </ion-item>
@@ -30,13 +30,13 @@
   <ion-col class="ion-text-center">
     <ion-label color=""><b>Ingrese fecha de Retiro</b></ion-label>
     <ion-item class="ion-text-center">
-      <ion-input type="date" [(ngModel)]="fechaRetiro"></ion-input>
+      <ion-input id="fechaRetiro" type="date" [(ngModel)]="fechaRetiro"></ion-input>
     </ion-item>
   </ion-col>
   <ion-col class="ion-text-center">
     <ion-label color=""><b>Ingrese fecha de Devolucion</b></ion-label>
     <ion-item class="ion-text-center">
-      <ion-input type="date" [(ngModel)]="fechaDevolucion"></ion-input>
+      <ion-input id="fechaDevolucion" type="date" [(ngModel)]="fechaDevolucion"></ion-input>
     </ion-item>
   </ion-col>
 </ion-row>
@@ -44,7 +44,7 @@
   <ion-row>
     <ion-col>
       <ion-button id="agregarPrestamo" *ngIf="!swGuardarCambios" (click)="addPrestamo()">Agregar Prestamo</ion-button>
-      <ion-button *ngIf="swGuardarCambios" color="warning" (click)="guardarCambios()">Guardar Cambios</ion-button>
+      <ion-button id="guardarCambios" *ngIf="swGuardarCambios" color="warning" (click)="guardarCambios()">Guardar Cambios</ion-button>
     </ion-col>
   </ion-row>
 </ion-list>
@@ -63,8 +63,8 @@
             <ion-card-title><b>Fecha de Retiro: </b>{{item.fechaRetiro}}</ion-card-title>
             <ion-card-title><b>Fecha de Devolución: </b>{{item.fechaDevolucion}}</ion-card-title>
           </ion-card-header>
-          <ion-button size="small" color="warning" fill="clear" (click)="updatePrestamo(item)">Editar</ion-button>
-          <ion-button size="small" color="danger" fill="clear" (click)="deletePrestamo(item)">Eliminar</ion-button>
+          <ion-button id="updatePrestamo" size="small" color="warning" fill="clear" (click)="updatePrestamo(item)">Editar</ion-button>
+          <ion-button id="deletePrestamo" size="small" color="danger" fill="clear" (click)="deletePrestamo(item)">Eliminar</ion-button>
         </ion-card>
       </ion-col>
     </ion-row>
