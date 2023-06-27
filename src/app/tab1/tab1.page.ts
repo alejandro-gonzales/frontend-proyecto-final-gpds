@@ -27,7 +27,7 @@ export class Tab1Page {
     this.usuarioServices.GetUsuario().subscribe({
       next: (response: HttpResponse<any>) => {
         this.listUsuario = response.body;
-        //console.log(this.listCategoria)
+        //console.log(this.listUsuario)
       },
       error: (error: any) => {
         console.log(error);
@@ -51,14 +51,14 @@ export class Tab1Page {
         next: (response: HttpResponse<any>) => {
           console.log(response.body)//1
           if(response.body == 1){
-            alert("Se agrego el usuario con exito :)");
+            alert("Se agrego el Usuario con exito :)");
             this.GetUsuario();//Se actualize el listado
             this.nombreCompleto = "";
             this.carnet = "";
             this.correo = "";
             this.celular = "";
           }else{
-            alert("Al agregar el usuario fallo exito :(");
+            alert("Al agregar el Usuario fallo exito :(");
           }
         },
         error: (error: any) => {
@@ -86,7 +86,7 @@ export class Tab1Page {
         next: (response: HttpResponse<any>) => {
           console.log(response.body)//1
           if(response.body == 1){
-            alert("Se modifico el usuario con exito :)");
+            alert("Se modifico el Usuario con exito :)");
             this.GetUsuario();//Se actualize el listado
             this.idUsuario = "";
             this.nombreCompleto = "";
@@ -94,7 +94,7 @@ export class Tab1Page {
             this.correo = "";
             this.celular = "";
           }else{
-            alert("Al modificar el usuario fallo exito :(");
+            alert("Al modificar el Usuario fallo exito :(");
           }
         },
         error: (error: any) => {
@@ -123,10 +123,10 @@ export class Tab1Page {
       next: (response: HttpResponse<any>) => {
         console.log(response.body)//1
         if(response.body == 1){
-          alert("Se elimino la categoria con exito :)");
+          alert("Se elimino el Usuario con exito :)");
           this.GetUsuario();//Se actualize el listado
         }else{
-          alert("Al eliminar la categoria fallo exito :(");
+          alert("Al eliminar el Usuario fallo exito :(");
         }
       },
       error: (error: any) => {
