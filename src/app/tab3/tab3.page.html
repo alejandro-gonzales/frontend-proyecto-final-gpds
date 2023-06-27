@@ -1,17 +1,72 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Tab 3
+<ion-header >
+  <ion-toolbar color="primary">
+    <ion-title color="light" class="ion-text-center">
+      <h1><b>CRUD Prestamo</b></h1>
     </ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header><br><br>
+
+<ion-row>
+  <ion-col class="ion-text-center">
+    <ion-label color=""><b>Seleccione el Usuario</b></ion-label>
+    <ion-item>
+      <ion-input type="text" hidden [(ngModel)]="idPrestamo"></ion-input>
+      <ion-input type="text" hidden [(ngModel)]="idUsuario"></ion-input>
+      <ion-select placeholder="Seleccione el Usuario" [(ngModel)]="idUsuario" class="select-small">
+        <ion-select-option *ngFor="let item of listUsuario" value={{item.id}}>{{item.nombreCompleto}}</ion-select-option>
+      </ion-select>
+    </ion-item> 
+  </ion-col>
+
+  <ion-col class="ion-text-center">
+    <ion-label color=""><b>Seleccione el Libro</b></ion-label>
+    <ion-item>
+      <ion-input type="text" hidden [(ngModel)]="idLibro"></ion-input>
+      <ion-select placeholder="Seleccione el Libro" [(ngModel)]="idLibro">
+        <ion-select-option *ngFor="let item of listLibro" value={{item.id}}>{{item.titulo}}</ion-select-option>
+      </ion-select>
+  </ion-item>
+  </ion-col>
+  <ion-col class="ion-text-center">
+    <ion-label color=""><b>Ingrese fecha de Retiro</b></ion-label>
+    <ion-item class="ion-text-center">
+      <ion-input type="date" [(ngModel)]="fechaRetiro"></ion-input>
+    </ion-item>
+  </ion-col>
+  <ion-col class="ion-text-center">
+    <ion-label color=""><b>Ingrese fecha de Devolucion</b></ion-label>
+    <ion-item class="ion-text-center">
+      <ion-input type="date" [(ngModel)]="fechaDevolucion"></ion-input>
+    </ion-item>
+  </ion-col>
+</ion-row>
+<ion-list class="ion-text-center ion-margin-bottom">
+  <ion-row>
+    <ion-col>
+      <ion-button id="agregarPrestamo" *ngIf="!swGuardarCambios" (click)="addPrestamo()">Agregar Prestamo</ion-button>
+      <ion-button *ngIf="swGuardarCambios" color="warning" (click)="guardarCambios()">Guardar Cambios</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-list>
+
+<h1 class="ion-text-center"><b>PRESTAMOS REGISTRADOS</b></h1><br>
 
 <ion-content>
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <ion-grid>
+    <ion-row class="ion-text-center">
+      <ion-col size="4" *ngFor="let item of listPrestamo">
+        <ion-card class="ion-text-center">
+          <ion-card-header>
+            <ion-card-title><b>Id Prestamo: </b>{{item.id}}</ion-card-title>
+            <ion-card-title><b>Id Usuario: </b>{{item.usuario.nombreCompleto}}</ion-card-title>
+            <ion-card-title><b>Id Libro: </b>{{item.libro.titulo}}</ion-card-title>
+            <ion-card-title><b>Fecha de Retiro: </b>{{item.fechaRetiro}}</ion-card-title>
+            <ion-card-title><b>Fecha de Devolución: </b>{{item.fechaDevolucion}}</ion-card-title>
+          </ion-card-header>
+          <ion-button size="small" color="warning" fill="clear" (click)="updatePrestamo(item)">Editar</ion-button>
+          <ion-button size="small" color="danger" fill="clear" (click)="deletePrestamo(item)">Eliminar</ion-button>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
