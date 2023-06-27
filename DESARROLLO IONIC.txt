@@ -12,5 +12,3 @@ ir al directorio del proyecto
 
 Paso 4
 ./node_modules/.bin/cypress open
-
-
